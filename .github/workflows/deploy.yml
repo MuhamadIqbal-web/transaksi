@@ -48,8 +48,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/transaksi:latest
-
+          tags: ghcr.io/${{ github.repository }}/transaksi:latest
 
   deploy:
     runs-on: ubuntu-latest
@@ -62,12 +61,8 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           password: ${{ secrets.VPS_PASS }}
           script: |
-            # masuk ke folder project di VPS
             cd /home/${{ secrets.VPS_USER }}/transaksi
-
-            # update repo
             git pull origin master
-
-            # rebuild & restart container
             docker-compose pull
             docker-compose up -d --force-recreate
+            docker ps -a

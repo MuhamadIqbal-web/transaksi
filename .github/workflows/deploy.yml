@@ -48,7 +48,8 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/transaksi:latest
+          tags: ghcr.io/muhamadiqbal-web/transaksi:latest
+
 
   deploy:
     runs-on: ubuntu-latest
